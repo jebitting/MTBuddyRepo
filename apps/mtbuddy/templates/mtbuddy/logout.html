@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <title>My Trip Buddy! | Logout</title>
+    <link rel="stylesheet" href="{% static 'mtbuddy/css/materialize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'mtbuddy/css/materialize_icons.css' %}">
+  	<script src="{% static 'mtbuddy/js/jquery-2.2.3.js' %}"></script>
+  	<script src="{% static 'mtbuddy/js/jquery-ui.js' %}"></script>
+  	<script src="{% static 'mtbuddy/js/materialize.js' %}"></script>
+  </head>
+  <body>
+    <header class="orange">
+      <nav class="orange">
+        <a class="brand-logo" href="#">My Travel Buddy Logout Page</a>
+      </nav>
+    </header>
+    <main class="container section">
+      <h3>We're Sorry to see you go.  Are you sure?</h3>
+      <section class="row">
+        <form class="col s6" method="link" action="{% url 'mtbuddy:dashboard' %}">
+          <button type="submit" name="dashboard" value="dashboard" class="btn">No - Return to Dashboard</button>
+        </form>
+          <form class="col s6" method="link" action="{% url 'mtbuddy:logout' %}">
+            <button type="submit" name="logout" value="logout" class="btn">Yes - Logout</button>
+          </form>
+      </section>
+    </main>
+  </body>
+</html>

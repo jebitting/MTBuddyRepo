@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <title>My Trip Buddy! | Create</title>
+    <link rel="stylesheet" href="{% static 'mtbuddy/css/materialize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'mtbuddy/css/materialize_icons.css' %}">
+  	<script src="{% static 'mtbuddy/js/jquery-2.2.3.js' %}"></script>
+  	<script src="{% static 'mtbuddy/js/jquery-ui.js' %}"></script>
+  	<script src="{% static 'mtbuddy/js/materialize.js' %}"></script>
+  </head>
+  <body>
+    <header class="orange">
+      <nav class="orange">
+        <a class="brand-logo" href="#">Use the following form to add a new trip to your account.</a>
+      </nav>
+    </header>
+    <main class="container section">
+      {% if messages %}
+      <div class="row">
+      {% for message in messages %}
+      <p class="red white-text col s6 offset-s3">{{message}}</p>
+      {% endfor %}
+      {% endif %}
+      <section class="row">
+        <form class="col s6" action="{% url 'mtbuddy:create' %}" method="post">
+          {% csrf_token %}
+          <input type="text" name="destination" placeholder="Destination">
+          <input type="text" name="description" placeholder="Description">
+          <input type="date" name="start_date">
+          <input type="date" name="end_date">
+          <button type="submit" name="mtb_login" value="newtrip" class="btn">Add Trip</button>
+        </form>
+      </section>
+      <section class="row">
+          <form class="col s6" method="link" action="{% url 'mtbuddy:landing' %}">
+            <button type="submit" name="landing" value="landing" class="btn">Return to Landing Page</button>
+          </form>
+      </section>
+      <section class="row">
+          <form class="col s6" method="link" action="{% url 'mtbuddy:dashboard' %}">
+            <button type="submit" name="dashboard" value="dashboard" class="btn">Return to Dashboard</button>
+          </form>
+      </section>
+    </main>
+  </body>
+</html>
